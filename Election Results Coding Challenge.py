@@ -33,3 +33,17 @@ incorrect_predictions = len(possible_surveys[possible_surveys < .5])
 
 ceballos_loss_surveys = incorrect_predictions / possible_surveys_length
 # print(ceballos_loss_surveys)
+
+# new distribution with 7000 people sample size
+large_survey_length = float(7000)
+large_survey = np.random.binomial(large_survey_length, .54, size=10000) / large_survey_length
+
+# plt.close()
+plt.hist(possible_surveys, range=(0, 1), bins=20)
+plt.hist(large_survey, alpha=0.5, range=(0, 1), bins=20)
+plt.show()
+
+# new outcome of ceballos losing 
+incorrect_predictions = len(large_survey[large_survey < .5])
+ceballos_lost_new = incorrect_predictions / large_survey_length
+print(ceballos_lost_new)
