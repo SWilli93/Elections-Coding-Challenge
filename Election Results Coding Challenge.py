@@ -17,3 +17,19 @@ survey_length = float(len(survey_responses))
 #percentage of voters who voted Ceballos
 percentage_ceballos = total_ceballos / survey_length
 # print(percentage_ceballos)
+
+# binomial distribution
+possible_surveys = np.random.binomial(survey_length, .54, size=10000) / survey_length
+
+#plotting of the histogram
+# plt.hist(possible_surveys, range=(0, 1), bins=20)
+# plt.show()
+
+
+# percentage of surveys less than 50%
+possible_surveys_length = float(len(possible_surveys))
+
+incorrect_predictions = len(possible_surveys[possible_surveys < .5])
+
+ceballos_loss_surveys = incorrect_predictions / possible_surveys_length
+# print(ceballos_loss_surveys)
